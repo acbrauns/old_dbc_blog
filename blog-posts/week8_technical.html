@@ -1,0 +1,110 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset=utf-8">
+        <link rel='stylesheet' href='stylesheets/week7_technical.css' />
+        <link href='http://fonts.googleapis.com/css?family=Muli:300, 400|Amatic+SC:700' rel='stylesheet' type='text/css'>
+        <title>Getting With the Program</title>
+	
+</head>
+<body>
+<div id="wrap">
+    <div id="header"><h1>Getting With the Program</h1>
+    	<h2 id="subheading">{Makeshift Attempts at Coding and Life}</h2>
+    </div>
+	<div id="nav" class="shadow">
+		<ul>
+		  <li><a href="../index.html">Home</a></li>
+		  <li><a href="../assignments.html">Assignments</a></li>
+		  <li><a href="../morale_boosts.html">Morale Boosts</a></li>
+		  <li><a href="../about.html">About</a></li>
+		</ul>
+	</div>
+	<div id="main">
+		<h2>Static and Dynamic Typing</h2>
+
+		<p>For static typed programming languages, variables must be defined as a certain type before they are used. Java, for example, would be confused if you simply began a program with x=5. Instead, you must declare what the type of variable x is, like this:</p>
+
+		<pre>
+			int x;
+			x =5;
+		</pre>
+
+		<p>You can also simply declare it as int x =5 (either is fine, but one is usually more fitting than the other depending on the context.) For a dynamic typed program, such as Ruby, the type does not need to be declared. Let&#39s say I wanted to create a method that takes an array as input. The method declaration would be something like:</p>
+
+		<pre>
+			def method (input)
+				some_value = input[0]	
+			end
+		</pre> 
+
+		<p>So what type of array is the input? Strings? Ints? Pandas? Who&#39s to say? Ruby don&#39t care! That&#39s why it&#39s dynamic. I can call method([1, 2, 3]), or I can call method([&quota&quot, &quotb&quot, &quotc&quot]), or I can call method([panda1, panda2, panda3]). (This last one assumes that I have for some reason created a Panda class and have created 3 Panda objects). This seems great, because I can call method(input) and have the return value be an int, a string, or an object.</p>
+
+		<p>Now, it really gets crazy when you consider this: the way this method is set up, input could even be a word! If I call method(&quotword&quot), then the return value some_value will be &quotw&quot.</p>
+
+		<p>What if we tried to do this with Java? To declare a similar method, we would have to declare that it is an array using [], and we would have to declare it as one of these:</p>
+
+		<pre>
+			method (String [] input){
+				String s = input[0];
+				return s;
+			}
+		</pre>
+
+<p>It seems to set so many unnecessary boundaries. It just seems like an overly strict parent, doesn&#39t it? No fun at all? Unless, maybe its annoying stiffness is actually there to help us. If I have not yet declared input as a variable, Java will freak out because it does not recognize it. But that can be helpful. Consider the following code in Ruby:</p>
+
+		<pre>
+			some_value = 9;
+			x = 1;
+			som_value = 9 + x;
+		</pre>
+
+<p>What if, while coding in Ruby, I made a typo the second time and typed &quotsom_value&quot? I would be left with two variables: some_value and som_value, so now some_value = 9 and som_value = 10. That&#39s going to confuse things later when I refer to some_value, expecting it to be 10.</p>
+
+<p>Java, or any static typed language, proves to be advantageous in this case. In addition, sometimes it&#39s harder to keep track of what a method should take in or return. If I want to create a method that takes an array of integers and returns the average value, strings have no business in that method. Sometimes the return value HAS to be a certain type, and that&#39s harder to control in dynamic typed languages. Sometimes in Ruby I think to myself, &quotWait, I have no idea what argument this method wants! Strings? Ints? Pandas?&quot And then I miss Java, where everything was so clearly spelled out.</p>
+
+<p>I initially was really annoyed with Ruby, finding its loose, dynamic capabilities almost immoral. It was the harlot of programming languages. Maybe that&#39s too harsh of an analogy. I guess if Java is the strict parent, then Ruby is Lorelai from <i>Gilmore Girls</i>. But now, I see the value of both static typed languages and dynamic languages. You need both strict boundaries and freedom. Eat your vegetables, but still have fun on the weekends. Or something.</p>
+
+
+
+	</div>
+
+
+	<div id="sidebar">
+		<h2>Recent Blog Posts</h2>
+	
+		<ul>
+			<li><a href="week6_cultural.html">Stereotypes and Self-Perception</a></li>
+			<li><a href="week6_technical.html">Blocks, Procs, and Lambdas</a></li>
+			<li><a href="week5_cultural.html">Pairing and Giving Feedback</a></li>
+			<li><a href="week5_technical.html">Classes, Objects, and Methods</a></li>
+			<li><a href="week4_cultural.html">Self-Driving Cars</a></li>
+			<li><a href="week4_technical.html">The .map Method</a></li>
+			<li><a href="week3_cultural.html">Gregoric Thinking Style</a></li>
+			<li><a href="week3_technical.html">Technical Blog: JavaScript</a></li>
+			<li><a href="week2_technical.html">Padding, Margin, and Borders</a></li>
+			<li><a href="week_1_cultural.html">Dev Bootcamp Culture</a></li>
+			<li><a href="week_1_technical.html">My Three Favorite Websites</a></li>
+		</ul> 
+		<p></p>
+		<p></p>
+		<h2>To Do</h2>
+		<ul>
+			<li>Fix sizing</li>
+			<li>Clean up code</li>
+			<li>Make template</li>
+			<li>Add nav bar links</li>
+			<li>Change to centered content layout</li>
+		</ul>
+
+	</div>
+
+	<div id="footer">
+		<p>Copyright &copy 2014. All Rights Reserved.</p>
+	</div>
+
+</div>
+
+</body>
+</html>

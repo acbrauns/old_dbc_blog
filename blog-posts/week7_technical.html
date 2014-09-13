@@ -1,0 +1,110 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset=utf-8">
+        <link rel='stylesheet' href='stylesheets/week7_technical.css' />
+        <link href='http://fonts.googleapis.com/css?family=Muli:300, 400|Amatic+SC:700' rel='stylesheet' type='text/css'>
+        <title>Getting With the Program</title>
+	
+</head>
+<body>
+<div id="wrap">
+    <div id="header"><h1>Getting With the Program</h1>
+    	<h2 id="subheading">{Makeshift Attempts at Coding and Life}</h2>
+    </div>
+	<div id="nav" class="shadow">
+		<ul>
+		  <li><a href="../index.html">Home</a></li>
+		  <li><a href="../assignments.html">Assignments</a></li>
+		  <li><a href="../morale_boosts.html">Morale Boosts</a></li>
+		  <li><a href="../about.html">About</a></li>
+		</ul>
+	</div>
+	<div id="main">
+		<h2>SQL Optimization</h2>
+		<p>As we have seen with Ruby, there are many ways to go about solving the same problem to get the same output. But some of those ways are more efficient than others. The same is true for SQL. Below are a couple examples of some ways to optimize queries for SQL.</p>
+
+		<p>1.Refer to actual column names rather than using the * operator.</p>
+
+		<p>Initial Query:</p>
+
+		<pre>
+		SELECT * FROM account_info;
+		</pre>
+
+		<p>Optimized Query:</p>
+
+		<pre>
+		SELECT id, first_name, last_name, phone_number, address 
+		FROM account_info;
+		</pre>
+	
+		<p>2. When selecting for subqueries in the main queries, try to select for them all at once.</p>
+
+		<p>Initial Query:</p>
+
+		<pre>
+		SELECT name
+		FROM student
+		WHERE grade = (SELECT MAX(grade) FROM student_info)
+		AND age = (SELECT MAX(age) FROM student_info);
+		</pre>
+
+		<p>Optimized Query:</p>
+
+		<pre>
+		SELECT name
+		FROM student
+		WHERE (grade, age) = (SELECT MAX(grade), MAX(age)
+		FROM student_info);
+		</pre>
+
+
+		<p>3. Limit the use of IN, as it has the slowest performance. When possible, use EXISTS. </p>
+		<p> 4. Use the word HAVING only when necessary. It does not change the selected items from the query, but acts as a filter. </p>
+
+		<p></p>
+		<p>There are many more ways to optimize SQL queries. For further resources and more examples, see <a href="http://dev.mysql.com/doc/refman/5.6/en/statement-optimization.html"><b>this link</b></a>.</p>
+
+
+	</div>
+
+
+	<div id="sidebar">
+		<h2>Recent Blog Posts</h2>
+	
+		<ul>
+			<li><a href="week6_cultural.html">Stereotypes and Self-Perception</a></li>
+			<li><a href="week6_technical.html">Blocks, Procs, and Lambdas</a></li>
+			<li><a href="week5_cultural.html">Pairing and Giving Feedback</a></li>
+			<li><a href="week5_technical.html">Classes, Objects, and Methods</a></li>
+			<li><a href="week4_cultural.html">Self-Driving Cars</a></li>
+			<li><a href="week4_technical.html">The .map Method</a></li>
+			<li><a href="week3_cultural.html">Gregoric Thinking Style</a></li>
+			<li><a href="week3_technical.html">Technical Blog: JavaScript</a></li>
+			<li><a href="week2_technical.html">Padding, Margin, and Borders</a></li>
+			<li><a href="week_1_cultural.html">Dev Bootcamp Culture</a></li>
+			<li><a href="week_1_technical.html">My Three Favorite Websites</a></li>
+		</ul> 
+		<p></p>
+		<p></p>
+		<h2>To Do</h2>
+		<ul>
+			<li>Fix sizing</li>
+			<li>Clean up code</li>
+			<li>Make template</li>
+			<li>Add nav bar links</li>
+			<li>Change to centered content layout</li>
+		</ul>
+
+	</div>
+
+	<div id="footer">
+		<p>Copyright &copy 2014. All Rights Reserved.</p>
+	</div>
+
+</div>
+
+</body>
+</html>

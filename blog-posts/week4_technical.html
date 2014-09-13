@@ -1,0 +1,100 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset=utf-8">
+        <link rel='stylesheet' href='stylesheets/week4_technical.css' />
+        <link href='http://fonts.googleapis.com/css?family=Muli:300, 400|Amatic+SC:700' rel='stylesheet' type='text/css'>
+        <title>Getting With the Program</title>
+	
+</head>
+<body>
+<div id="wrap">
+    <div id="header"><h1>Getting With the Program</h1>
+    	<h2 id="subheading">{Makeshift Attempts at Coding and Life}</h2>
+    </div>
+	<div id="nav" class="shadow">
+		<ul>
+		  <li><a href="../index.html">Home</a></li>
+		  <li><a href="../assignments.html">Assignments</a></li>
+		  <li><a href="../morale_boosts.html">Morale Boosts</a></li>
+		  <li><a href="../about.html">About</a></li>
+		</ul>
+	</div>
+	<div id="main">
+		<h2>The .map Method</h2>
+
+		<p>The .map method is a method in that can be called on an array to create a new array with the modfications specified in the block. For example, if you 
+wanted to make an identical copy of an array, you could do newarray = array.map{|e| e}, where e represents a single element in the array. This would
+essentially make a clone of the original array, equivalent to newarray = array.clone. If you want to make a modification that applies to every 
+element in the array, the map method is easier than iterating with a loop and adding each element one at a time to the new array in the block.</p>
+
+<p>Let's look at an example. One of the challenges this week involved writing a method that could decipher a code, like this:</p>
+
+<img src="images/decode_method.jpg">
+
+	<p>Essentially, we need to create a hash for which
+the values are the letters a-z and the keys are the same series of characters, offset by 4, like this:</p>
+
+<p>ALPHA_CODE = 
+{"e"=>"a", "f"=>"b", "g"=>"c", "h"=>"d", "i"=>"e", "j"=>"f", "k"=>"g", "l"=>"h", "m"=>"i", "n"=>"j", "o"=>"k", "p"=>"l", "q"=>"m", "r"=>"n", "s"=>"o", "t"=>"p", "u"=>"q", "v"=>"r", "w"=>"s", "x"=>"t", "y"=>"u", "z"=>"v", "a"=>"w", "b"=>"x", "c"=>"y", "d"=>"z"}<br>["@","#","$","%","^","&","*"].each {|e| ALPHA_CODE[e] = " "}</p>
+
+
+<p>The additional symbols added to the hash are keys for which all values will be a space.</p>
+
+<p>The decode method takes a string as input. The string is then split into an array of characters using the .split method. </p>
+
+<p>The .map method is the piece where the actual translating of the input occurs. For each element (character) e, the boolean method hash.has_key?(e) checks to
+see if the hash actually has a key the matches the character being iterated over. If it does, the value of that key (which is represented by hash[e]) is 
+added to the decoded array. If the that key does not exist (such as would be the case if the character is a digit rather than a letter), the element itself
+is added to the array.</p>
+
+<p>The array is then converted back into a string with the .join method. As a final step, if the string contants any digits, the integer value of that
+number is divided by 100 and replaced within the string. </p>
+
+<p>The .map method is extremely convenient and concise in this case, replacing most of the if statements within the original code. It even allows for 
+different modifications of the given element based on the condition (whether or not the key exists in the hash). The .map method can be used to 
+replace .each in many cases that require changing all elements in an array. The method can also be used on ranges and other types within the Enumerable class.</p>
+
+
+		
+	</div>
+
+
+	<div id="sidebar">
+		<h2>Recent Blog Posts</h2>
+	
+		<ul>
+			<li><a href="week6_cultural.html">Stereotypes and Self-Perception</a></li>
+			<li><a href="week6_technical.html">Blocks, Procs, and Lambdas</a></li>
+			<li><a href="week5_cultural.html">Pairing and Giving Feedback</a></li>
+			<li><a href="week5_technical.html">Classes, Objects, and Methods</a></li>
+			<li><a href="week4_cultural.html">Self-Driving Cars</a></li>
+			<li><a href="week4_technical.html">The .map Method</a></li>
+			<li><a href="week3_cultural.html">Gregoric Thinking Style</a></li>
+			<li><a href="week3_technical.html">Technical Blog: JavaScript</a></li>
+			<li><a href="week2_technical.html">Padding, Margin, and Borders</a></li>
+			<li><a href="week_1_cultural.html">Dev Bootcamp Culture</a></li>
+			<li><a href="week_1_technical.html">My Three Favorite Websites</a></li>
+		</ul> 
+		<p></p>
+		<p></p>
+		<h2>To Do</h2>
+		<ul>
+			<li>Fix sizing</li>
+			<li>Clean up code</li>
+			<li>Make template</li>
+			<li>Add nav bar links</li>
+			<li>Change to centered content layout</li>
+		</ul>
+
+	</div>
+
+	<div id="footer">
+		<p>Copyright &copy 2014. All Rights Reserved.</p>
+	</div>
+
+</div>
+
+</body>
+</html>

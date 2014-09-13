@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style type="text/css">
+        body
+        {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 20px;
+            background-color: #942933;
+            margin: 0px;
+            padding: 0px; 
+        }
+
+        #wrapper
+        {
+            width: 70%;
+            min-height: 600px;
+            margin: 0px auto;
+            padding: 0px; 
+        }
+
+        header 
+        {
+
+           font-family: 'Lobster', cursive;
+           margin: 0px auto;
+           padding: 50px 0 30px 0px;
+           text-align: center;
+       }
+
+        button
+        {
+            background-color: #000000;
+            color: rgb(250, 250, 250);
+            border: 0;
+            height: 50px;
+            width: 100px;
+            border-radius: 10px;
+            display: block;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 16px;
+        }
+
+        img
+        {
+            height: 150px;
+            text-align: center;
+            display: block;
+            margin: 0px auto 0px auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 25px;
+
+        }
+        td{padding-top: 15px; padding-right: 15px;}
+
+        #left {float: left;}
+
+        #right
+        {
+            float: right;
+            max-width: 500px;
+            padding-top: 50px;
+        }
+
+        #ronCals, #ronItems, #lesCals, #lesItems, #chrisCals, #chrisItems{color: #FFFFFF;}
+        
+        #about
+        {
+            padding-bottom: 50px; 
+            text-align: justify;
+            margin-top: 50px;
+        }
+      a{color: #000000}
+
+    </style>
+
+    <meta charset = "utf-8">
+   <link href='http://fonts.googleapis.com/css?family=Lobster|Open+Sans' rel='stylesheet' type='text/css'>
+    <title>Breakfast Contest</title>
+</head>
+<body>
+<header>
+    <h1>No Food Finer at JJ's Diner</h1>
+    <h2>A Parks and Rec Breakfast Competition</h2>
+</header>
+<div id="wrapper">
+
+
+
+            <div id="left">
+                 <table id="myTABLE">
+                    <tr>
+                    <td><img id ="btnRon" src="images/ron_web.jpg"></td>
+                    <td><p>Name: Ron Swanson<br>Current calories consumed: <span id="ronCals">0</span><br>Remaining packages of bacon: <span id="ronItems">20</span></p></td>
+                    </tr>
+                    <tr>
+                    <td> <img id ="btnLeslie" src="images/leslie_web.jpg"></td>
+                    <td><p>Name: Leslie Knope<br>Current calories consumed: <span id="lesCals">0</span><br>Remaining waffle sections: <span id="lesItems">20</span></p></td>
+                    </tr>
+                    <tr>
+                    <td><img id ="btnChris" src="images/chris_web.jpg"></td>
+                    <td><p>Name: Chris Traeger<br>Current calories consumed: <span id="chrisCals">0</span><br>Remaining hard-boiled egg whites: <span id="chrisItems">20</span></p></td>
+                    </tr>
+                    </table>
+            </div>
+           
+
+            <div id = "right">
+                <button id="reset">Start Over</button>
+                <p id="about">Ron, Leslie, and Chris are eating breakfast at JJ's Diner when they decide to have an eating contest with each their favorite breakfast foods. Chris claims he can eat 20 hard-boiled egg whites the fastest. Leslie claims she can eat 20 quarted-waffle sections the fastest. Ron, being a proud man and a meat lover, claims he can eat 20 packages of bacon the fastest.<br><br>Who will win? You decide! Click on a contestant's face to make them eat more!<br><br>Or click <a href="https://github.com/acbrauns/phase-0-unit-1/blob/master/week-3/5-design-cc-mission-solo-challenge/my_solution.js" target="_blank"><b>here</b></a> to see my GitHub file.</p>
+            </div>
+
+              
+   
+</div>
+
+<script>
+var bacon =  new fav_food(20, 450);    
+var waffle = new fav_food(20, 150);
+var hb_egg = new fav_food(20, 20);
+    
+var Ron = 
+{
+    name: "Ron",
+    male: true,
+    cals_consumed: 0,
+    fav_food: bacon,
+    winning_comment: "\"Why is everyone else so bad at eating??\""
+}
+
+var Leslie = 
+{
+    name: "Leslie",
+    male: false,
+    cals_consumed: 0,
+    fav_food: waffle,
+    winning_comment: "\"What? It's the best thing on the menu! Knope out!\""
+
+}
+    
+var Chris =
+{
+  name: "Chris",
+  male: true,
+  cals_consumed: 0,
+  fav_food: hb_egg,
+  winning_comment: "\"That is LIT'RALLY the most I have ever eaten.\""
+ }
+
+    
+function fav_food(items, calories)
+    {
+    this.items = items;
+    this.calories = calories;
+    }
+    
+document.getElementById("btnRon").onclick = function(){eat(Ron, "ronCals", "ronItems")};
+document.getElementById("btnLeslie").onclick = function(){eat(Leslie, "lesCals", "lesItems")};
+document.getElementById("btnChris").onclick = function(){eat(Chris, "chrisCals", "chrisItems")};
+document.getElementById("reset").onclick = function(){window.location.reload()};
+
+
+function eat(contestant, idCals, idItems)
+{
+    if (contestant.fav_food.items > 0)
+    {
+       contestant.fav_food.items -= 1;   
+        contestant.cals_consumed += contestant.fav_food.calories;   
+
+        document.getElementById(idCals.toString()).innerHTML = contestant.cals_consumed;
+        document.getElementById(idItems.toString()).innerHTML = contestant.fav_food.items;
+
+        if(contestant.fav_food.items == 0)
+            celebrate(contestant);
+    }
+    
+        
+    
+}
+    
+function celebrate(contestant)
+    {
+    document.getElementById("about").innerHTML = contestant.name + " wins! To which "  + (contestant.male ? "he" : "she") + " says: " + contestant.winning_comment;
+    }
+    
+</script>
+
+</body>
+</html> 
+

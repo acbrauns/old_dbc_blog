@@ -1,0 +1,102 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset=utf-8">
+        <link rel='stylesheet' href='stylesheets/week5_technical.css' />
+        <link href='http://fonts.googleapis.com/css?family=Muli:300, 400|Amatic+SC:700' rel='stylesheet' type='text/css'>
+        <title>Getting With the Program</title>
+	
+</head>
+<body>
+<div id="wrap">
+    <div id="header"><h1>Getting With the Program</h1>
+    	<h2 id="subheading">{Makeshift Attempts at Coding and Life}</h2>
+    </div>
+	<div id="nav" class="shadow">
+		<ul>
+		  <li><a href="../index.html">Home</a></li>
+		  <li><a href="../assignments.html">Assignments</a></li>
+		  <li><a href="../morale_boosts.html">Morale Boosts</a></li>
+		  <li><a href="../about.html">About</a></li>
+		</ul>
+	</div>
+	<div id="main">
+		<h2>Classes, Objects, and Methods</h2>
+		<p>	For demonstrating the concepts of classes, objects, and instances, I have chosen to stick with a recurring theme in my Dev Bootcamp assignments: TV characters and food. This program that I have created allows the user to create Person objects and Food objects. Users can call the eat(food) method to make a Person eat a certain food. This method will keep track of how many calories that Person has consumed. In addition, the Food class tracks the number of units of a particular food item that a Person has eaten.</p>
+
+		<p>Before I continue, if you would like to see the actual Ruby file with code that can be run from your terminal or with ctrl + B in Sublime,  go to <a href="https://github.com/acbrauns/acbrauns.github.io/blob/master/blog-posts/week4_classes_test.rb" target="_blank"><b>this link on GitHub</b></a> and copy and paste the text into a new Ruby file.</p>
+
+		 <img src="images/week5_technical/Slide1.jpg">
+
+		<p>The code above shows a sample of what methods the user can call. In lines 46-48, we create 3 new Person objects: ron, stewie, and cartman. We then create a few food objects. The first parameter is the string name of the food object; the second is an integer representing the number of calories that we choose to assign to that particular food object.</p>
+
+		<p>We then call the eat method on any of our Person objects that we have created, passing in any of the food objects we have created. For example, whenever we call ron.eat(bacon), this adds 350 calories to ron's cals_eaten instance variable because we assigned 350 as the amount of calories for the bacon object. Thus if we call ron.eat(bacon) twice, his cals_eaten instance variable will be at 700.</p>
+		
+		<p>Let&#39s take a look at the code that actually allows the user to create Person and Food objects:</p>
+
+		<img src="images/week5_technical/Slide2.jpg">
+
+		<p>To create a Person, the initialize method accepts a name variable (a string to represent the Person&#39s name). The instance variable cals_eaten is set to 0 initally, because we assume that no person has eaten any food yet.</p>
+
+		<p> The @@people variable is a class variable, not an instance variable. In line 2, we see that it is created as an array. In line 7, the @name variable (for example, &quotRon&quot), is added to the people array. This means that for each Person object we create, that Person&#39s name will be added to the array. This way, we can see how many Person objects we have created by calling Person.people, which simple returns the class variable people (lines 16-18).</p>
+
+		<p>To understand the eat method in lines 10-14, we have to take a look at the code for the Food class:</p>
+	
+		<img src="images/week5_technical/Slide3.jpg">
+
+		<p>When we call eat(food) from the Person class (line 10), we are calling that method on a Person object, but passing in a Food object (such as bacon, pie, friedchicken) as a parameter. In line 11, calling food.eaten applies to a particular food object. We see in line 34 the eaten method from the Food class. This method simply increases the units_eaten of that food by 1. This means that whether we call ron.eats(bacon), stewie.eats(bacon), or cartman.eats(bacon), the bacon object&#39s instance variable @units_eaten will always increase by 1. This way, we can see how much bacon has been eaten by all of our Person objects, not just by one at a time.</p>
+
+		<p>In lines 12-13 of the eat method within the Person class, we also increase the @cals_eaten instance variable for a given Person. In line 13 we are able to reference the @cals_per_unit instance variable for a given Food by calling food.instance_variable_get(:@cals_per_unit). This method allows us to access an instance variable from a different class altogether!</p>
+
+		<p>Finally, we can looks at a few more things in the Food class. As we saw with the Person class, the double @@ denotes a class variable. Line 24 creates the class variable @@menu_items as an array. As we create new food objects, they will be added to this array. To view a list of the current items on the menu, we can just call puts Food.menu_items.</p>
+
+		<p>The initialize method for the Food class takes two parameters, a string name for the food and an integer cals_per_unit. These are instance variables, denoted by the single @ sign. We also initialize the @units_eaten instance variable to 0, as we assume that none of that Food Object has been eaten right upon initialization. The units_eaten variable will increase once the eat(food) method has been called.</p>
+
+		<p>This is a very simple example of objects, classes, and the difference between instance and class variables. A simple way to think to of the organization of classes and methods is that an object (which is an instance of  a class) is like a noun, and a method is like a verb. You can define what common characteristics all instances of a class should have by creating different methods. Different classes can access information within one another through the use of class and instance variables.</p>
+
+		<p>It might be a little confusing at first as to why it is necessary to compartmentalize objects this way. But the more you code, the more you see its value, particularly as it gets much more complicated than this example. But if you take away one thing from this blog entry, remember only this: <a href="http://www.youtube.com/watch?v=7ZmqJQ-nc_s" target="_blank"><b>You can&#39t have pie without coolhhwhip!!!</b></a></p>
+
+
+		
+		
+	</div>
+
+
+	<div id="sidebar">
+		<h2>Recent Blog Posts</h2>
+	
+		<ul>
+			<li><a href="week6_cultural.html">Stereotypes and Self-Perception</a></li>
+			<li><a href="week6_technical.html">Blocks, Procs, and Lambdas</a></li>
+			<li><a href="week5_cultural.html">Pairing and Giving Feedback</a></li>
+			<li><a href="week5_technical.html">Classes, Objects, and Methods</a></li>
+			<li><a href="week4_cultural.html">Self-Driving Cars</a></li>
+			<li><a href="week4_technical.html">The .map Method</a></li>
+			<li><a href="week3_cultural.html">Gregoric Thinking Style</a></li>
+			<li><a href="week3_technical.html">Technical Blog: JavaScript</a></li>
+			<li><a href="week2_technical.html">Padding, Margin, and Borders</a></li>
+			<li><a href="week_1_cultural.html">Dev Bootcamp Culture</a></li>
+			<li><a href="week_1_technical.html">My Three Favorite Websites</a></li>
+		</ul> 
+		<p></p>
+		<p></p>
+		<h2>To Do</h2>
+		<ul>
+			<li>Fix sizing</li>
+			<li>Clean up code</li>
+			<li>Make template</li>
+			<li>Add nav bar links</li>
+			<li>Change to centered content layout</li>
+		</ul>
+
+	</div>
+
+	<div id="footer">
+		<p>Copyright &copy 2014. All Rights Reserved.</p>
+	</div>
+
+</div>
+
+</body>
+</html>

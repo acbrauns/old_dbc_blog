@@ -1,0 +1,138 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset=utf-8">
+        <link rel='stylesheet' href='stylesheets/week6_technical.css' />
+        <link href='http://fonts.googleapis.com/css?family=Muli:300, 400|Amatic+SC:700' rel='stylesheet' type='text/css'>
+        <title>Getting With the Program</title>
+	
+</head>
+<body>
+<div id="wrap">
+    <div id="header"><h1>Getting With the Program</h1>
+    	<h2 id="subheading">{Makeshift Attempts at Coding and Life}</h2>
+    </div>
+	<div id="nav" class="shadow">
+		<ul>
+		  <li><a href="../index.html">Home</a></li>
+		  <li><a href="../assignments.html">Assignments</a></li>
+		  <li><a href="../morale_boosts.html">Morale Boosts</a></li>
+		  <li><a href="../about.html">About</a></li>
+		</ul>
+	</div>
+	<div id="main">
+		<h2>Blocks, Procs, and Lambdas</h2>
+		<p>So far with Ruby, we have mainly been using blocks when looping through data.  This refers to the code that is contained between curly braces or the &quotdo&quot and &quotend&quot keywords. We&#39ve seem this used with many things such as .select. Let&#39s say we have two hashes filled with names and genders, like this:</p>
+
+		<pre>
+		greendale = {"Jeff"=>:male, "Britta"=>:female, "Troy"=>:male, 
+		            "Abed"=>:male, "Shirley"=>:female, "Annie"=>:female}
+
+		parksrec = {"Ron"=>:male, "Leslie"=>:female, "April"=>:female, 
+		            "Andy"=>:male, "Donna"=>:female, "Tom"=>:male}
+		</pre>
+
+		<p>What if we want to select only girls whose name starts with the letter A? We could use a block with the same code twice, like this:</p>
+
+		<pre>
+			selected_greendale = greendale.select do |name, gender|
+			    gender==:female && name[0]=="A"
+			end
+
+			selected_parksrec = parksrec.select do |name, gender|
+			    gender==:female && name[0]=="A"
+			end
+		</pre>
+		
+
+		<p>But this gets a little repetitive. One way we could you would be to create a method that we could call a number of times. But there is an even easier way to do this when a method is not necessary needed.</p>
+
+		<p>Procs are one way to do it. The above code can be replaced with a proc like this:</p>
+
+		<pre>
+			a_women = Proc.new {|name, gender| gender==:female && name[0]=="A"}
+
+			selected_greendale = greendale.select(&a_women)
+			selected_parksrec = parksrec.select(&a_women)
+		</pre>
+
+		<p>This will give us the name &quotAnnie&quot for the some_greendale hash and &quotApril&quot for the some_parksrec hash. </p>
+
+		<p>Essentially, Proc.new creates a new object. The code that normally appears in the block of the select method can be added instead when defining the new Proc object. The select method is then called using (&a_women) as the parameter. The & character is being used to denote that an object is being passed in.</p>
+
+		<p>Another way of doing this would be with a lamda. These are similar to Procs, as they are objects. The syntax looks almost exactly the same, like this:</p>
+
+		<pre>
+			a_women = lambda{|name, gender| gender==:female && name[0]=="A"}
+
+			selected_greendale = greendale.select(&a_women)
+			selected_parksrec = parksrec.select(&a_women)
+		</pre>
+
+		<p>The only change was replacing &quotProc.new&quot with &quotlambda&quot in the creation of a_women. So what is the difference between lambdas and procs? We can see the difference best if we use procs and lambas inside methods. In the example below, we can use .call to call the proc and the lambda immediately after they have been created.</p>
+
+		<pre>
+			def lambda_method
+				 lambda { return "inside the lambda block" }.call
+				 return "inside the lambda method"
+			end
+
+			def proc_method
+				 Proc.new { return "inside the proc block" }.call
+				 return "inside the proc method"
+			end
+
+			p lambda_method
+			p proc_method
+		</pre>
+
+		<p>The output of the code above is:</p>
+
+		<pre>
+			"inside the lambda method"
+			"inside the proc block"
+		</pre>
+
+		<p>When a lambda has a return, it passes control back to the calling method. But when a proc has a return, it returns and then breaks, without executing the rest of the method. In short, blocks, procs, and lambdas all work for iterating through data, but procs and lambdas can make a block reusable without having to define it in a method. </p>
+
+	</div>
+
+
+	<div id="sidebar">
+		<h2>Recent Blog Posts</h2>
+	
+		<ul>
+			<li><a href="week6_cultural.html">Stereotypes and Self-Perception</a></li>
+			<li><a href="week6_technical.html">Blocks, Procs, and Lambdas</a></li>
+			<li><a href="week5_cultural.html">Pairing and Giving Feedback</a></li>
+			<li><a href="week5_technical.html">Classes, Objects, and Methods</a></li>
+			<li><a href="week4_cultural.html">Self-Driving Cars</a></li>
+			<li><a href="week4_technical.html">The .map Method</a></li>
+			<li><a href="week3_cultural.html">Gregoric Thinking Style</a></li>
+			<li><a href="week3_technical.html">Technical Blog: JavaScript</a></li>
+			<li><a href="week2_technical.html">Padding, Margin, and Borders</a></li>
+			<li><a href="week_1_cultural.html">Dev Bootcamp Culture</a></li>
+			<li><a href="week_1_technical.html">My Three Favorite Websites</a></li>
+		</ul> 
+		<p></p>
+		<p></p>
+		<h2>To Do</h2>
+		<ul>
+			<li>Fix sizing</li>
+			<li>Clean up code</li>
+			<li>Make template</li>
+			<li>Add nav bar links</li>
+			<li>Change to centered content layout</li>
+		</ul>
+
+	</div>
+
+	<div id="footer">
+		<p>Copyright &copy 2014. All Rights Reserved.</p>
+	</div>
+
+</div>
+
+</body>
+</html>

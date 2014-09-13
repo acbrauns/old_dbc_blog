@@ -1,0 +1,21 @@
+
+
+h1{
+	text-align: center;
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	color: rgb(68, 84, 106);
+}
+
+p{
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 18;
+	color: rgb(68, 84, 106);
+}
+
+h3{
+	/*font-family: Georgia, Times, "Times New Roman", serif;*/
+	/*font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;*/
+	/*font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;*/
+	font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+	color: rgb(0, 32, 96);
+}

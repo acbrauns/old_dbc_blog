@@ -1,0 +1,28 @@
+body
+{
+	font-family: Arial;
+	background-color: #BDFCC9;
+}
+
+
+p {
+	color: #3D9140;
+}
+
+h1{
+
+}
+
+.underline
+{
+	text-decoration: underline;
+}
+
+
+.bp {
+	background:purple;
+	}
+
+#bw{
+	background:white;
+	}
